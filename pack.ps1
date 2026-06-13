@@ -1,4 +1,4 @@
-# Multi-View Chrome Extension Packer
+# GridPlayer Chrome Extension Packer
 
 $root  = Split-Path $MyInvocation.MyCommand.Path
 $dist  = Join-Path $root "dist"
@@ -6,10 +6,10 @@ $stage = Join-Path $dist "_stage"
 
 # Read version from manifest.json
 $version = (Get-Content (Join-Path $root "manifest.json") -Raw | ConvertFrom-Json).version
-$zip     = Join-Path $dist "multi-view-v$version.zip"
+$zip     = Join-Path $dist "gridplayer-v$version.zip"
 
 Write-Host ""
-Write-Host " [Multi-View Packer]  version $version" -ForegroundColor Cyan
+Write-Host " [GridPlayer Packer]  version $version" -ForegroundColor Cyan
 Write-Host " Output: $zip"
 Write-Host ""
 
