@@ -1,144 +1,244 @@
-# Multi-View — 多視窗影片播放器
+<div align="center">
 
-> 同時在 Chrome 側邊欄觀看多個影片串流，支援 2×2 / 3×3 / 4×4 / 5×5 格局。
+# GridPlayer
 
----
+### Watch many videos at once — in one tidy grid.
 
-## 截圖
+**Paste links · pick a layout · everything plays side by side, right in Chrome's side panel.**
 
-*(截圖待補)*
+![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
+![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?style=flat-square)
+![Platform](https://img.shields.io/badge/platform-Chrome-4285F4?style=flat-square)
+![Side Panel](https://img.shields.io/badge/Chrome-Side%20Panel-FBBC05?style=flat-square)
 
----
+🌐 &nbsp; **English** &nbsp;·&nbsp; [繁體中文](README.zh-TW.md)
 
-## 這是什麼？
+</div>
 
-**Multi-View** 是一個 Chrome 擴充功能（Manifest V3），讓你在瀏覽器右側的 **Side Panel（側邊欄）** 中同時播放最多 25 部影片。不用開很多分頁、不用手動排視窗大小——把 URL 貼上去，馬上播放。
-
-支援 YouTube、Twitch 直播與 VOD、Vimeo、Nicovideo、TikTok、PornHub、XHamster、Rule34Video、Ashemaletube、XGroovy、BitChute、Odysee、XVideos、XNXX 等平台。
-
----
-
-## 安裝方式（開發者模式載入）
-
-目前尚未上架 Chrome Web Store，請依下列步驟手動安裝：
-
-1. 下載或 clone 本專案到本機任意資料夾。
-2. 在 Chrome 網址列輸入 `chrome://extensions` 並進入。
-3. 開啟右上角的 **「開發人員模式」** 開關。
-4. 按下左上角的 **「載入未封裝項目」**。
-5. 選取本專案的資料夾（包含 `manifest.json` 的那一層）。
-6. 安裝完成後，Chrome 工具列會出現 Multi-View 圖示。
+<!--
+After publishing, swap the "coming soon" badge for the live ones (replace EXTENSION_ID):
+![Version](https://img.shields.io/chrome-web-store/v/EXTENSION_ID?style=flat-square&label=Chrome%20Web%20Store)
+![Users](https://img.shields.io/chrome-web-store/users/EXTENSION_ID?style=flat-square)
+![Rating](https://img.shields.io/chrome-web-store/rating/EXTENSION_ID?style=flat-square)
+-->
 
 ---
 
-## 如何使用
-
-### 開啟側邊欄
-
-點一下工具列的 **Multi-View 圖示**，右側會滑出側邊欄。
-
-### 貼上影片 URL
-
-1. 在任意一格點 **「+」** 按鈕，輸入框會展開。
-2. 貼上影片頁面的網址（例如 `https://www.youtube.com/watch?v=xxxxx`）。
-3. 按 **播放** 或 **Enter**，影片就會在該格載入。
-
-支援直接貼上影片頁面的一般網址，不需要自己找 embed 連結——擴充功能會自動轉換。
-
-### 批次貼上
-
-把多個 URL 一行一行複製到剪貼簿，然後按頂部的 **「貼上」** 按鈕，系統會依序填滿空格。
-
-### 格局切換
-
-頂部有 **2×2 / 3×3 / 4×4 / 5×5** 四個按鈕，隨時切換格數。
-
-### 選取模式（在影片網站上使用）
-
-在受支援的影片網站瀏覽時，頁面右下角會出現一個浮動工具列：
-
-- 按 **「選擇」** 進入選取模式。
-- 點擊頁面上的影片縮圖連結，即可選取（會以紫色框標示）。
-- 選好後按 **「送入面板 →」**，側邊欄會自動開啟並載入選取的影片。
+> **GridPlayer** is a Chrome extension (Manifest V3) that turns your browser's **side panel** into a video wall. Paste up to **25** video links and watch them all at once in a **2×2 / 3×3 / 4×4 / 5×5** grid — no juggling tabs, no manual window tiling. It auto-converts ordinary page URLs into embeds, remembers your favorite line-ups as one-click groups, and gives every frame its own playback controls. Works with YouTube, Twitch, Vimeo, Niconico, TikTok and many more.
 
 ---
 
-## 功能列表
+## The problem
 
-| 功能 | 說明 |
-|------|------|
-| **格局切換** | 2×2、3×3、4×4、5×5，最多同時看 25 部影片 |
-| **URL 自動轉換** | 貼上一般網址，自動轉成 embed 格式 |
-| **群組記憶** | 把目前載入的 URL 組合存成「群組」，之後一鍵還原；最多 20 組 |
-| **快速儲存** | 直接覆蓋更新目前已載入的群組 |
-| **群組編輯** | 可替群組加備註名稱、修改其中的 URL |
-| **群組列收合** | 按 ▲/▼ 按鈕收起或展開群組列 |
-| **複製全部 URL** | 一鍵複製目前所有格的網址到剪貼簿 |
-| **批次貼上** | 從剪貼簿一次貼入多個 URL，填滿空格 |
-| **重排** | 把有空隙的影片格往前移，消除空格 |
-| **拖曳移動** | 在格子之間拖曳，重新排列影片位置 |
-| **拖曳放入** | 從瀏覽器外部拖曳連結到格子上直接載入 |
-| **暫停全部 / 繼續全部** | 一鍵對所有格發出暫停或繼續指令 |
-| **靜音全部 / 取消靜音** | 一鍵控制所有格的音量 |
-| **每格個別控制** | 每一格都有獨立的播放、暫停、重載、停止、下一部按鈕 |
-| **在新分頁開啟** | 把目前的畫面搬到一個獨立分頁（自動調整視窗寬度至最低 900px）|
-| **亮色 / 暗色主題** | 點 ☀/🌙 切換，設定會記憶 |
-| **多語言介面** | 繁中、简中、EN、日本語，隨時切換 |
-| **Toast 通知** | 操作後顯示簡短提示，不打斷播放 |
-| **Buy Me a Coffee** | 右上角 ☕ 支持開發者 |
+Watching several things at the same time on the web is clumsy:
+
+- **Tab juggling.** Open one stream per tab and you're constantly clicking back and forth — you can only ever see one at a time.
+- **Picture-in-Picture is single.** PiP pops out *one* video. It can't tile four games, three music streams, and a tutorial.
+- **Manual tiling.** Dragging and resizing a wall of browser windows by hand is tedious and never quite lines up.
+- **Embed walls.** Many players refuse to load in an `<iframe>`, so even a DIY grid breaks on half the sites you try.
+
+The people who most want a multi-view dashboard — sports fans, traders, esports viewers, students — end up fighting their browser instead of watching.
+
+## The solution
+
+**GridPlayer collapses all of that into one side panel.**
+
+```
+Paste links  →  pick 2×2 / 3×3 / 4×4 / 5×5  →  everything plays at once
+                              ↓
+     save the line-up as a named group · reload it later with one click
+```
+
+Paste a normal watch-page URL and GridPlayer figures out the embed for you. It strips the framing headers that would otherwise block playback, lays the videos out in a clean grid, and hands you per-frame controls — so you can finally watch many things at once without leaving the page you're on.
 
 ---
 
-## 支援的平台
+## Key features
 
-| 平台 | 說明 |
-|------|------|
-| **YouTube** | 影片、直播（`watch?v=`、`youtu.be/`、`/live/`） |
-| **Twitch** | 直播頻道、VOD、Clips |
-| **Vimeo** | 一般影片 |
-| **Nicovideo** | 使用官方 embed.nicovideo.jp |
-| **TikTok** | 使用影片頁面 URL（TikTok 自身限制，部分影片可能無法播放）|
-| **PornHub** | 影片頁面 URL 自動轉 embed |
+- 📺 **Up to 25 videos at once** — 2×2, 3×3, 4×4 or 5×5 grid layouts, switchable any time.
+- 🔗 **Paste any URL** — ordinary watch-page links are auto-converted to embeds; no hunting for embed codes.
+- 📌 **Group memory** — save the current line-up as a named group and reload it with one click (up to 20 groups). Add notes, rename, edit URLs, or quick-save to overwrite.
+- 🖱️ **Drag everywhere** — reorder frames by dragging, drop external links straight into a cell, and re-pack to close gaps.
+- 🎛️ **Per-frame controls** — every cell has its own play, pause, reload, stop, next and open-in-new-tab buttons.
+- 🔊 **Global controls** — pause all / resume all and mute all / unmute all in one click.
+- 📋 **Copy & batch paste** — copy every URL to the clipboard, or paste many URLs at once to fill empty cells.
+- 🎯 **Selection mode** — on supported sites a floating toolbar lets you click video thumbnails and send them straight into the panel.
+- 🪟 **Pop out to a tab** — move the grid into its own window for big screens (auto-sized to ≥900px).
+- 🌐 **Multi-language UI** — Traditional Chinese, Simplified Chinese, English, Japanese; switch on the fly.
+- 🎨 **Dark & light themes** — your choice is remembered.
+- ⚡ **Lightweight & ad-free** — pure side-panel design, no injected ads, no behavior tracking.
+
+---
+
+## Why GridPlayer
+
+|  | Many browser tabs | Picture-in-Picture | **GridPlayer** |
+|---|---|---|---|
+| **Videos visible at once** | Only the active tab | 1 floating window | **Up to 25 in a grid** |
+| **Layout** | Manual window tiling | None | **2×2 / 3×3 / 4×4 / 5×5, one click** |
+| **Save & restore a line-up** | ❌ | ❌ | **✅ named groups, one click** |
+| **Per-video controls in view** | Switch tabs first | Limited | **✅ every frame** |
+| **Cross-platform embeds** | — | — | **✅ YouTube, Twitch, Vimeo… auto-converted** |
+| **Footprint** | Heavy (N tabs) | Built-in | **One side panel** |
+
+**The wedge:** GridPlayer is the only one of these that shows many videos in a controllable grid *and* remembers your setups — without opening a single extra tab.
+
+---
+
+## Layouts
+
+```
+   2×2            3×3                4×4 / 5×5
+┌──┬──┐      ┌──┬──┬──┐
+│▶ │▶ │      │▶ │▶ │▶ │       up to 25 frames
+├──┼──┤      ├──┼──┼──┤       in a single panel
+│▶ │▶ │      │▶ │▶ │▶ │
+└──┴──┘      ├──┼──┼──┤
+             │▶ │▶ │▶ │
+             └──┴──┴──┘
+```
+
+---
+
+## Install
+
+### 1. Chrome Web Store (recommended)
+
+> 🚧 Listing pending review — link coming soon.
+
+### 2. Load unpacked (developer mode)
+
+1. Download or clone this repository to any local folder.
+2. Open `chrome://extensions` in Chrome.
+3. Turn on **Developer mode** (top-right toggle).
+4. Click **Load unpacked** (top-left).
+5. Select this project's folder (the one containing `manifest.json`).
+6. The GridPlayer icon appears in your Chrome toolbar.
+
+---
+
+## Usage
+
+### Open the side panel
+Click the **GridPlayer icon** in the toolbar — the panel slides out on the right.
+
+### Paste a video URL
+1. Click the **＋** button in any cell to expand the input.
+2. Paste the video page URL (e.g. `https://www.youtube.com/watch?v=xxxxx`).
+3. Press **Play** or **Enter** — the video loads in that cell.
+
+You can paste a normal watch-page URL; GridPlayer converts it to an embed automatically — no need to find the embed link yourself.
+
+### Batch paste
+Copy several URLs (one per line) to your clipboard, then click **Paste** at the top — empty cells fill up in order.
+
+### Switch layouts
+Use the **2×2 / 3×3 / 4×4 / 5×5** buttons at the top to change the number of cells any time.
+
+### Selection mode (on video sites)
+While browsing a supported site, a floating toolbar appears at the bottom-right of the page:
+
+- Click **Select** to enter selection mode.
+- Click video thumbnail links on the page to pick them (highlighted in purple).
+- Click **Send to panel →** — the side panel opens and loads your picks.
+
+---
+
+## Supported platforms
+
+| Platform | Notes |
+|---|---|
+| **YouTube** | Videos & livestreams (`watch?v=`, `youtu.be/`, `/live/`) |
+| **Twitch** | Live channels, VODs, Clips |
+| **Vimeo** | Standard videos |
+| **Niconico** | Via official `embed.nicovideo.jp` |
+| **TikTok** | Uses the video page URL (TikTok's own limits mean some videos may not play) |
+| **PornHub** | Video page URL auto-converted to embed |
 | **XHamster** | xhamster.com / xhamster.desi / xhamster.one |
-| **Rule34Video** | 支援 |
-| **Ashemaletube** | 支援 |
-| **XGroovy** | 支援 |
-| **BitChute** | 支援 |
-| **Odysee** | 支援 |
-| **XVideos** | 部分支援（見下方「已知限制」）|
-| **XNXX** | 部分支援（見下方「已知限制」）|
+| **Rule34Video** | Supported |
+| **Ashemaletube** | Supported |
+| **XGroovy** | Supported |
+| **BitChute** | Supported |
+| **Odysee** | Supported |
+| **XVideos** | Partial — see [Known limitations](#known-limitations) |
+| **XNXX** | Partial — see [Known limitations](#known-limitations) |
 
 ---
 
-## 常見問題（FAQ）
+## Under the hood
 
-**Q: 影片格子顯示錯誤頁面或空白，怎麼辦？**
-先試試每格右側的「重載」按鈕。若仍無法播放，該平台可能暫時不支援嵌入。
+Built to embed players that normally fight back, while staying a thin side-panel app:
 
-**Q: YouTube 影片無法自動播放？**
-Chrome 的自動播放政策要求使用者先與頁面互動。點一下影片格的播放鍵即可。
-
-**Q: Twitch 直播播不出來？**
-本擴充功能使用 `parent=localhost` 參數搭配 DNR 規則模擬來自 localhost 的請求來繞過 Twitch 的 embed 限制，大多數情況下可正常播放。若仍有問題，請確認 Twitch 頻道名稱拼寫正確。
-
-**Q: XVideos / XNXX 無法播放？**
-這兩個平台的 embed 頁面本身設有 `X-Frame-Options: sameorigin` 限制，目前無法完全繞過，可能顯示錯誤。URL 仍會被轉換為 embedframe 格式，但能否實際播放取決於平台當時的政策。
-
-**Q: XHamster 點了播放按鈕卻跳走？**
-已透過 Content Script 修正此問題：隱藏蓋在播放鍵上方的 CTA 覆蓋層，並攔截 gamr.info 導向連結。若遇到問題，請確認使用的是 xhamster.com、xhamster.desi 或 xhamster.one 的影片頁面 URL。
-
-**Q: 群組最多可以存幾個？**
-最多 **20 組**。超過上限時會出現提示，請先刪除舊群組。
-
-**Q: 切換語言後介面沒有完全更新？**
-動態產生的群組名稱會在切換語言後自動重新渲染。若有其他元素未更新，重新整理側邊欄即可。
-
-**Q: 「在新分頁開啟」和直接使用側邊欄有什麼差別？**
-功能完全相同，差別只在視窗形式。新分頁模式可以拉更大的視窗，適合大螢幕使用，視窗寬度會自動記憶（最低 900px）。
+- **Manifest V3 + Side Panel API** — the whole UI lives in Chrome's native side panel; no injected page UI, no background tab.
+- **Automatic URL conversion** (`url_converter.js`) — paste an ordinary watch page and GridPlayer derives the correct embed URL per platform.
+- **Header stripping via `declarativeNetRequest`** — removes `X-Frame-Options` / frame-ancestor headers so players that block `<iframe>` embedding load correctly. The rules are split into several short regex filters to stay under Chrome's `regexFilter` complexity limit (a single long regex silently fails to register).
+- **Twitch embed bypass** — DNR rewrites let the Twitch player accept a `parent=localhost` request, so channels, VODs and clips play inside the grid.
+- **Content script + selection mode** — a floating toolbar on supported sites lets you pick thumbnails and push them to the panel, plus site-specific fixes (e.g. hiding the XHamster CTA overlay that hijacks the play button, and intercepting `gamr.info` redirects).
+- **Runtime i18n** (`i18n.js`) — switch between 繁中 / 简中 / EN / 日本語 without reloading the panel.
 
 ---
 
-## 開發者 / 支持
+## FAQ
 
-- 開發者：Arthur Wang
-- 支持開發：[buymeacoffee.com/arthurwang](https://buymeacoffee.com/arthurwang)
+**A cell shows an error page or stays blank — what do I do?**
+Try the **Reload** button on that cell first. If it still won't play, that platform may temporarily block embedding.
+
+**YouTube won't autoplay.**
+Chrome's autoplay policy requires a user interaction first. Just click the cell's play button.
+
+**A Twitch stream won't play.**
+GridPlayer uses a `parent=localhost` parameter together with DNR rules to satisfy Twitch's embed restrictions, which works in most cases. If it still fails, double-check the channel name spelling.
+
+**How many groups can I save?**
+Up to **20**. Past the limit you'll be prompted to delete an old group first.
+
+**The UI didn't fully update after switching language.**
+Dynamically generated group names re-render automatically on language change. If anything else looks stale, reload the side panel.
+
+**What's the difference between "open in a new tab" and the side panel?**
+Functionally identical — only the window form differs. The tab mode lets you make a much larger window for big screens, and remembers its width (minimum 900px).
+
+---
+
+## Known limitations
+
+- **XVideos / XNXX** — their embed pages set `X-Frame-Options: sameorigin`, which can't currently be fully bypassed; they may show an error. The URL is still converted to embed form, but whether it actually plays depends on the platform's policy at the time.
+- **TikTok** — platform restrictions mean some videos won't embed.
+- **Autoplay** — blocked until you interact (Chrome policy); click play on the cell.
+- **Groups capped at 20** — delete old ones to make room.
+
+---
+
+## Roadmap
+
+> Aspirational — edit to match your real plans.
+
+- [ ] Chrome Web Store launch
+- [ ] Per-group saved layout (remember 2×2 vs 4×4 per group)
+- [ ] More platforms
+- [ ] Edge / Firefox port
+
+---
+
+## Privacy
+
+- Pure **side-panel** design — no ads are injected into any page.
+- **No behavior tracking** and no telemetry.
+- Your groups, theme and language preferences are stored **locally** via `chrome.storage`; nothing is sent to a server.
+
+---
+
+## Disclaimer
+
+GridPlayer is an independent project and is **not affiliated with, endorsed by, or sponsored by** YouTube, Twitch, Vimeo, Niconico, TikTok, or any other platform listed above. All product names and trademarks are the property of their respective owners. GridPlayer only embeds publicly accessible player/embed pages under your own usage — you are responsible for complying with each platform's terms of service and your local laws.
+
+---
+
+## Developer & support
+
+- **Developer:** Arthur Wang
+- **Support development:** [buymeacoffee.com/arthurwang](https://buymeacoffee.com/arthurwang)
+
+## License
+
+No open-source license is set yet — all rights reserved by the author. Add a `LICENSE` file if you want to make it open source.
