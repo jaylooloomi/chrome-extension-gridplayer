@@ -1,26 +1,65 @@
 <div align="center">
 
-# GridPlayer
+# GridPlayer — Multi-Screen Video Wall
 
-### Watch many videos at once — in one tidy grid.
+### Watch up to 25 videos at once — in one tidy grid, right inside Chrome.
 
-**Paste links · pick a layout · everything plays side by side, right in Chrome's side panel.**
+**Paste links · pick a layout · everything plays side by side in Chrome's side panel.**
 
-![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-coming%20soon-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
+<br>
+
+<a href="https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm">
+  <img src="https://img.shields.io/badge/Get_it_on-Chrome_Web_Store-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Get it on the Chrome Web Store" height="46">
+</a>
+
+<br>
+<br>
+
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/omaiimpkbenmfbbfipmmgmomidbndpjm?style=flat-square&label=Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4)](https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm)
+[![Users](https://img.shields.io/chrome-web-store/users/omaiimpkbenmfbbfipmmgmomidbndpjm?style=flat-square&label=users&color=34A853)](https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm)
+[![Rating](https://img.shields.io/chrome-web-store/rating/omaiimpkbenmfbbfipmmgmomidbndpjm?style=flat-square&label=rating&color=FBBC05)](https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?style=flat-square)
-![Platform](https://img.shields.io/badge/platform-Chrome-4285F4?style=flat-square)
-![Side Panel](https://img.shields.io/badge/Chrome-Side%20Panel-FBBC05?style=flat-square)
 
 🌐 &nbsp; **English** &nbsp;·&nbsp; [繁體中文](README.zh-TW.md)
 
+<br>
+
+<a href="https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm">
+  <img src="chrome-extension-market/4twitch.png" alt="GridPlayer playing four live streams at once in a 2×2 grid inside Chrome's side panel" width="100%">
+</a>
+
+<sub>▲ Four live streams, one panel, zero tab-juggling. <a href="https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm"><b>Add it to Chrome — free →</b></a></sub>
+
 </div>
 
-<!--
-After publishing, swap the "coming soon" badge for the live ones (replace EXTENSION_ID):
-![Version](https://img.shields.io/chrome-web-store/v/EXTENSION_ID?style=flat-square&label=Chrome%20Web%20Store)
-![Users](https://img.shields.io/chrome-web-store/users/EXTENSION_ID?style=flat-square)
-![Rating](https://img.shields.io/chrome-web-store/rating/EXTENSION_ID?style=flat-square)
--->
+---
+
+## 👀 See it in action
+
+<div align="center">
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="chrome-extension-market/4twitch.png" alt="2×2 grid of four videos"><br>
+      <b>2×2</b> — four streams side by side
+    </td>
+    <td width="50%" valign="top">
+      <img src="chrome-extension-market/9demo.png" alt="3×3 grid of nine videos"><br>
+      <b>3×3</b> — nine videos in a single panel
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="chrome-extension-market/4light.png" alt="Per-frame playback controls on a 2×2 grid"><br>
+      <b>Per-frame controls</b> — play, pause &amp; seek any cell
+    </td>
+    <td width="50%" valign="top">
+      <img src="chrome-extension-market/16demo.png" alt="4×4 grid showing sixteen videos at once"><br>
+      <b>4×4 / 5×5</b> — go all the way up to 25 at once
+    </td>
+  </tr>
+</table>
+</div>
 
 ---
 
@@ -104,7 +143,9 @@ Paste a normal watch-page URL and GridPlayer figures out the embed for you. It s
 
 ### 1. Chrome Web Store (recommended)
 
-> 🚧 Listing pending review — link coming soon.
+**[▶ Install GridPlayer from the Chrome Web Store →](https://chromewebstore.google.com/detail/gridplayer-multi-screen-v/omaiimpkbenmfbbfipmmgmomidbndpjm)**
+
+One click, completely free, no sign-up. Pin the icon to your toolbar and the side panel is ready to go.
 
 ### 2. Load unpacked (developer mode)
 
@@ -213,7 +254,7 @@ Functionally identical — only the window form differs. The tab mode lets you m
 
 > Aspirational — edit to match your real plans.
 
-- [ ] Chrome Web Store launch
+- [x] Chrome Web Store launch 🎉
 - [ ] Per-group saved layout (remember 2×2 vs 4×4 per group)
 - [ ] More platforms
 - [ ] Edge / Firefox port
